@@ -97,29 +97,66 @@ function buildCharts(sample) {
     // Deliverable 2- Inside Build Table
 
     // 1. Create the trace for the bubble chart.
-
+    // need to create new variables without the filter of 10 to show more "bubbles"
+    var bubbleLabel =result.otu_labels;
+    var bubbleValues =result.sample_values;
     var bubbleData = [{
       x: otuIds,
-      y: sampleValues,
-      text: otuLabels,
+      y: bubbleValues,
+      text: bubbleLabel,
       mode: 'markers',
       marker: {
-        size: sampleValues,
+        size: bubbleValues,
+        color: otuIds,
+        colorscale: 'Earth'
       }
     }];
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
-      showlegend: true
+      showlegend: false
     }
-
     // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot("bubble, bubbleData, bubbleLayout"); 
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
 
+// Deliverable 3
 
+    // 1. create a variable that filters the metadata for an object in the array whose id matches the ID number in build charts
+    var metadata = data.metadata;
 
+    // 2. create a variable that holds the first sample array from previous step
 
+    var metaSample = metadata.filter(sampleObj => sampleObj.id == sample);
+    var metaResult =metaSample[0];
+
+    // Create a variable that converts the washing frequency to a floating point number
+    var gaugeResult =parseFloat(metaResult.wfreq);
+
+    // 4. Create the trace for the gauge chart.
+    var gaugeData = [{
+      value: gaugeResult,
+      type: "indicator",
+      mode: "gauge+number",
+      gauge:{
+        axis:{range: [null, 10], dtick: 2},
+        bar: {color: "black"},
+        steps: [
+          {range: [0,2], color: "red"},
+          {range: [2,4], color: "orange"},
+          {range: [4,6], color: "yellow"},
+          {range: [6,8], color: "lightgreen"},
+          {range: [8,10], color: "green"},
+        ],
+      }
+    }];
+
+    // 5. Create the layout for the gauge chart.
+    var gaugeLayout = { 
+      title: {text: "<b>Belly Button Washing Frequency </br> <br>Scrubs Per Week"}
+    };
+
+    Plotly.newPlot("gauge", gaugeData,gaugeLayout);
 
   });
 }

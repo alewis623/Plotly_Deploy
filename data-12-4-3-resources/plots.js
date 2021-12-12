@@ -42,47 +42,6 @@ function buildMetadata(sample) {
         });
     });
 }
-function buildCharts(sample) {
-    d3.json("samples.json").then((data) => {
-        
-        
-        
 
-
-
-        var bubbleLable = result.otu_lables;
-        var bubbleValue = result.sample_values;
-
-
-
-        var barLayout = {
-            title: "Top 10 Bacteria Cultures Found",
-            plot_bgcolor: "#F0F8FF",
-            paper_bgcolor: "#F0F8FF",
-            font: {
-                family: "Arial"
-            }
-        };
-        plotly.newPlot("bar",barData,barLayout);
-        var bubbleData = [{
-            x:otuIds, 
-            y:bubbleValues,
-            text: bubbleLables,
-            mode: 'markers',
-            marker: {
-                size: bubbleValue,
-                color: bubbleValue,
-                colorscale: 'Jet'
-            }
-        }];
-        var bubbleLayout = {
-            title: "Bacteria Cultures Per Sample",
-            plot_bgcolor: "#F0F8FF",
-            paper_bgcolor: "#F0F8FF",
-        }
-        plotly.newPlot("bubble", bubbleData, bubbleLayout);
-
-    })
-}
 
 
