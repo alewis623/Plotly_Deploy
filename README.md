@@ -1,1 +1,3 @@
-# Module 12 Plotly
+# Belly Button Biodiversity
+## Overview of Analysis
+This analysis was developed to assist a biological researcher in a prominate biological laboratory. The hypothisis is to discover bacteria that have the ability to synthesis protiens to taste like beef. They have partnered with a food startup Improbable Beef to research candidate species. While fungi, algae, and microorganisims found in plant roots have show promise . The proper bacteria is ellusive for deterimining the very best beef subsitute. Bacteria on the human body could be a possible source. Specifically the bacteria found in the belly button. The dataset hase been created to secure the test subjects identities.
